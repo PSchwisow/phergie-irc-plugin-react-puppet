@@ -1,0 +1,35 @@
+{
+    "name": "pschwisow/phergie-irc-plugin-react-puppet",
+    "description": "Phergie plugin for Allows a user to effectively speak and act as the bot.",
+    "keywords": [ "phergie", "irc", "bot", "plugin" ],
+    "license": "BSD-2-Clause",
+    "support": {
+        "email": "patrick.schwisow@gmail.com",
+        "irc": "irc://irc.freenode.net/phergie",
+        "issues": "https://github.com/PSchwisow/phergie-irc-plugin-react-puppet/issues",
+        "source": "https://github.com/pschwisow/phergie-irc-plugin-react-puppet"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "phergie/phergie-irc-bot-react": "dev-master",
+        "phergie/phergie-irc-plugin-react-command": "dev-master"
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*",
+        "phake/phake": "2.0.0-beta2"
+    },
+    "suggest": {
+        "phergie/phergie-irc-plugin-react-commandhelp": "provides interactive help for commands"
+    },
+    "autoload": {
+        "psr-4": {
+            "PSchwisow\\Phergie\\Plugin\\Puppet\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PSchwisow\\Phergie\\Tests\\Plugin\\Puppet\\": "tests"
+        }
+    }
+}
