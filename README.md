@@ -2,7 +2,7 @@
 
 [Phergie](http://github.com/phergie/phergie-irc-bot-react/) plugin that allows a user to effectively speak and act as the bot.
 
-[![Build Status](https://secure.travis-ci.org/pschwisow/phergie-irc-plugin-react-puppet.png?branch=master)](http://travis-ci.org/pschwisow/phergie-irc-plugin-react-puppet)
+[![Build Status](https://secure.travis-ci.org/PSchwisow/phergie-irc-plugin-react-puppet.png?branch=master)](http://travis-ci.org/pschwisow/phergie-irc-plugin-react-puppet)
 
 ## Install
 
