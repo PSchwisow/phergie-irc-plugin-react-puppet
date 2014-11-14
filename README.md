@@ -21,12 +21,10 @@ See Phergie documentation for more information on
 
 ## Configuration
 
+There is no plug-in specific configuration. Just add the following to the plugins section of your config.php.
+
 ```php
-new \PSchwisow\Phergie\Plugin\Puppet\Plugin(array(
-
-
-
-))
+new \PSchwisow\Phergie\Plugin\Puppet\Plugin
 ```
 
 ## Tests
