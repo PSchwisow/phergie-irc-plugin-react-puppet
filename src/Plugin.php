@@ -66,7 +66,7 @@ class Plugin extends AbstractPlugin
     {
         $params = $event->getCustomParams();
         if (count($params) < 2) {
-            $this->handleSayHelp($event, $queue);
+            $this->handleActHelp($event, $queue);
         } else {
             $channels = array_shift($params);
             $queue->ctcpAction($channels, implode(' ', $params));
@@ -82,6 +82,7 @@ class Plugin extends AbstractPlugin
      */
     public function handleRawCommand(Event $event, Queue $queue)
     {
+        $this->handleRawHelp($event, $queue);
     }
 
     /**
@@ -122,6 +123,7 @@ class Plugin extends AbstractPlugin
     {
         $this->sendHelpReply($event, $queue, array(
             'Usage: puppet a raw command',
+            'NOT CURRENTLY IMPLEMENTED',
             'Instructs the bot to repeat a raw command.',
         ));
     }

@@ -6,11 +6,12 @@
 
 ## Install
 
-The recommended method of installation is [through composer](http://getcomposer.org).
+The recommended method of installation is [through composer](http://getcomposer.org). The command help plug-in is not required, but is recommended (omit it if choose to).
 
 ```JSON
 {
     "require": {
+        "phergie/phergie-irc-plugin-react-commandhelp": "dev-master",
         "pschwisow/phergie-irc-plugin-react-puppet": "dev-master"
     }
 }
@@ -21,10 +22,37 @@ See Phergie documentation for more information on
 
 ## Configuration
 
-There is no plug-in specific configuration. Just add the following to the plugins section of your config.php.
+There is no plug-in specific configuration. The command plug-in is a hard dependency. If you include command help as recommend in the install section, you should also include it here.
 
 ```php
-new \PSchwisow\Phergie\Plugin\Puppet\Plugin
+return array(
+    'plugins' => array(
+        // dependencies
+        new \Phergie\Irc\Plugin\React\Command\Plugin,
+        new \Phergie\Irc\Plugin\React\CommandHelp\Plugin, // optional / recommended
+
+        new \PSchwisow\Phergie\Plugin\Puppet\Plugin,
+    )
+);
+```
+
+## Usage
+
+You can direct the bot either in a channel or by private message.
+
+Private Message Window:
+```
+PSchwisow: say #phergie I am a bot.
+PSchwisow: act #phergie acts like a bot.
+PSchwisow: help say
+Phergie: Usage: puppet saying something
+Phergie: Instructs the bot to repeat the specified phrase.
+```
+
+Channel #phergie:
+```
+Phergie: I am a bot.
+- Phergie acts like a bot.
 ```
 
 ## Tests
