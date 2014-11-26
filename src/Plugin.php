@@ -94,7 +94,9 @@ class Plugin extends AbstractPlugin
     public function handleSayHelp(Event $event, Queue $queue)
     {
         $this->sendHelpReply($event, $queue, array(
-            'Usage: puppet saying something',
+            'Usage: say channel message',
+            'channel - comma-separated list of channels/users to send the message to',
+            'message - the message to send (all words after this are assumed to be part of message)',
             'Instructs the bot to repeat the specified phrase.',
         ));
     }
@@ -108,7 +110,9 @@ class Plugin extends AbstractPlugin
     public function handleActHelp(Event $event, Queue $queue)
     {
         $this->sendHelpReply($event, $queue, array(
-            'Usage: puppet an action',
+            'Usage: act channel message',
+            'channel - comma-separated list of channels/users to send the action to',
+            'message - the message to include in the action (all words after this are assumed to be part of message)',
             'Instructs the bot to repeat the specified action.',
         ));
     }
@@ -122,8 +126,7 @@ class Plugin extends AbstractPlugin
     public function handleRawHelp(Event $event, Queue $queue)
     {
         $this->sendHelpReply($event, $queue, array(
-            'Usage: puppet a raw command',
-            'NOT CURRENTLY IMPLEMENTED',
+            'Usage: NOT CURRENTLY IMPLEMENTED',
             'Instructs the bot to repeat a raw command.',
         ));
     }
