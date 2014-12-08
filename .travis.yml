@@ -6,6 +6,10 @@ php:
   - 5.6
   - hhvm
 
+addons:
+  code_climate:
+    repo_token: 326c908852ef79ca6c7132f2461be883db1e4fac73d72630d54d7fd0283a4e45
+
 before_script:
   - composer self-update
   - composer install
@@ -14,4 +18,4 @@ script:
   - ./vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
 
 after_script:
-  - CODECLIMATE_REPO_TOKEN=326c908852ef79ca6c7132f2461be883db1e4fac73d72630d54d7fd0283a4e45 ./vendor/bin/test-reporter
+  - vendor/bin/test-reporter
