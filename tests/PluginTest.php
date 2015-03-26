@@ -4,7 +4,7 @@
  *
  * @link https://github.com/pschwisow/phergie-irc-plugin-react-puppet for the canonical source repository
  * @copyright Copyright (c) 2014 Patrick Schwisow (https://github.com/PSchwisow/phergie-irc-plugin-react-puppet)
- * @license http://phergie.org/license New BSD License
+ * @license http://phergie.org/license Simplified BSD License
  * @package PSchwisow\Phergie\Plugin\Puppet
  */
 
