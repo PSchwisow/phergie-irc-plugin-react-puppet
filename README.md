@@ -44,6 +44,7 @@ Private Message Window:
 ```
 PSchwisow: say #phergie I am a bot.
 PSchwisow: act #phergie acts like a bot.
+PSchwisow: notice #phergie I like bots.
 PSchwisow: help say
 Phergie: Usage: puppet saying something
 Phergie: Instructs the bot to repeat the specified phrase.
@@ -53,6 +54,7 @@ Channel #phergie:
 ```
 Phergie: I am a bot.
 - Phergie acts like a bot.
+*Phergie* I like bots.
 ```
 
 ## Tests

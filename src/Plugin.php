@@ -32,9 +32,11 @@ class Plugin extends AbstractPlugin
         return array(
             'command.say' => 'handleSayCommand',
             'command.act' => 'handleActCommand',
+            'command.notice' => 'handleNoticeCommand',
             'command.raw' => 'handleRawCommand',
             'command.say.help' => 'handleSayHelp',
             'command.act.help' => 'handleActHelp',
+            'command.notice.help' => 'handleNoticeHelp',
             'command.raw.help' => 'handleRawHelp',
         );
     }
@@ -70,6 +72,23 @@ class Plugin extends AbstractPlugin
         } else {
             $channels = array_shift($params);
             $queue->ctcpAction($channels, implode(' ', $params));
+        }
+    }
+
+    /**
+     * Notice Command
+     *
+     * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
+     * @param \Phergie\Irc\Bot\React\EventQueueInterface $queue
+     */
+    public function handleNoticeCommand(Event $event, Queue $queue)
+    {
+        $params = $event->getCustomParams();
+        if (count($params) < 2) {
+            $this->handleNoticeHelp($event, $queue);
+        } else {
+            $channels = array_shift($params);
+            $queue->ircNotice($channels, implode(' ', $params));
         }
     }
 
@@ -114,6 +133,22 @@ class Plugin extends AbstractPlugin
             'channel - comma-separated list of channels/users to send the action to',
             'message - the message to include in the action (all words after this are assumed to be part of message)',
             'Instructs the bot to repeat the specified action.',
+        ));
+    }
+
+    /**
+     * Notice Command Help
+     *
+     * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
+     * @param \Phergie\Irc\Bot\React\EventQueueInterface $queue
+     */
+    public function handleNoticeHelp(Event $event, Queue $queue)
+    {
+        $this->sendHelpReply($event, $queue, array(
+            'Usage: notice channel message',
+            'channel - comma-separated list of channels/users to send the notice to',
+            'message - the message to send (all words after this are assumed to be part of message)',
+            'Instructs the bot to send the specified notice.',
         ));
     }
 

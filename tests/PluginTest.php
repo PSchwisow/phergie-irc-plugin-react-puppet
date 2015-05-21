@@ -72,6 +72,30 @@ class PluginTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests handleNoticeCommand().
+     */
+    public function testHandleNoticeCommand()
+    {
+        $event = $this->getMockCommandEvent();
+        Phake::when($event)->getSource()->thenReturn('#channel');
+        Phake::when($event)->getCommand()->thenReturn('PRIVMSG');
+        $queue = $this->getMockEventQueue();
+        $plugin = new Plugin;
+        $channels = '#channel1,#channel2';
+
+        Phake::when($event)->getCustomParams()->thenReturn(array($channels));
+        $plugin->handleNoticeCommand($event, $queue);
+
+        Phake::when($event)->getCustomParams()->thenReturn(array($channels, 'some', 'text'));
+        $plugin->handleNoticeCommand($event, $queue);
+
+        Phake::inOrder(
+            Phake::verify($queue, Phake::atLeast(1))->ircPrivmsg('#channel', $this->isType('string')),
+            Phake::verify($queue)->ircNotice($channels, 'some text')
+        );
+    }
+
+    /**
      * Tests handleRawCommand().
      */
     public function testHandleRawCommand()
