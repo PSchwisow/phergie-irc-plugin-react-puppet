@@ -35,10 +35,10 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         $plugin = new Plugin;
         $channels = '#channel1,#channel2';
 
-        Phake::when($event)->getCustomParams()->thenReturn(array($channels));
+        Phake::when($event)->getCustomParams()->thenReturn([$channels]);
         $plugin->handleSayCommand($event, $queue);
 
-        Phake::when($event)->getCustomParams()->thenReturn(array($channels, 'some', 'text'));
+        Phake::when($event)->getCustomParams()->thenReturn([$channels, 'some', 'text']);
         $plugin->handleSayCommand($event, $queue);
 
         Phake::inOrder(
@@ -59,10 +59,10 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         $plugin = new Plugin;
         $channels = '#channel1,#channel2';
 
-        Phake::when($event)->getCustomParams()->thenReturn(array($channels));
+        Phake::when($event)->getCustomParams()->thenReturn([$channels]);
         $plugin->handleActCommand($event, $queue);
 
-        Phake::when($event)->getCustomParams()->thenReturn(array($channels, 'some', 'text'));
+        Phake::when($event)->getCustomParams()->thenReturn([$channels, 'some', 'text']);
         $plugin->handleActCommand($event, $queue);
 
         Phake::inOrder(
@@ -83,10 +83,10 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         $plugin = new Plugin;
         $channels = '#channel1,#channel2';
 
-        Phake::when($event)->getCustomParams()->thenReturn(array($channels));
+        Phake::when($event)->getCustomParams()->thenReturn([$channels]);
         $plugin->handleNoticeCommand($event, $queue);
 
-        Phake::when($event)->getCustomParams()->thenReturn(array($channels, 'some', 'text'));
+        Phake::when($event)->getCustomParams()->thenReturn([$channels, 'some', 'text']);
         $plugin->handleNoticeCommand($event, $queue);
 
         Phake::inOrder(
@@ -108,10 +108,10 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         $plugin = new Plugin;
         $channels = '#channel1,#channel2';
 
-        Phake::when($event)->getCustomParams()->thenReturn(array($channels));
+        Phake::when($event)->getCustomParams()->thenReturn([$channels]);
         $plugin->handleRawCommand($event, $queue);
 
-        Phake::when($event)->getCustomParams()->thenReturn(array($channels, 'some', 'text'));
+        Phake::when($event)->getCustomParams()->thenReturn([$channels, 'some', 'text']);
         $plugin->handleRawCommand($event, $queue);
 
         Phake::inOrder(
@@ -127,16 +127,16 @@ class PluginTest extends \PHPUnit_Framework_TestCase
      */
     public function dataProviderHandleHelp()
     {
-        $data = array();
+        $data = [];
 
-        $methods = array(
+        $methods = [
             'handleSayHelp',
             'handleActHelp',
             'handleRawHelp',
-        );
+        ];
 
         foreach ($methods as $method) {
-            $data[] = array($method);
+            $data[] = [$method];
         }
 
         return $data;
@@ -151,7 +151,7 @@ class PluginTest extends \PHPUnit_Framework_TestCase
     public function testHandleHelp($method)
     {
         $event = $this->getMockCommandEvent();
-        Phake::when($event)->getCustomParams()->thenReturn(array());
+        Phake::when($event)->getCustomParams()->thenReturn([]);
         Phake::when($event)->getSource()->thenReturn('#channel');
         Phake::when($event)->getCommand()->thenReturn('PRIVMSG');
         $queue = $this->getMockEventQueue();

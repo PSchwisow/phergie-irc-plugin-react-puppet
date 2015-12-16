@@ -11,8 +11,8 @@ The recommended method of installation is [through composer](http://getcomposer.
 ```JSON
 {
     "require": {
-        "phergie/phergie-irc-plugin-react-commandhelp": "dev-master",
-        "pschwisow/phergie-irc-plugin-react-puppet": "dev-master"
+        "phergie/phergie-irc-plugin-react-commandhelp": "^1",
+        "pschwisow/phergie-irc-plugin-react-puppet": "^2"
     }
 }
 ```
@@ -26,13 +26,13 @@ There is no plug-in specific configuration. The command plug-in is a hard depend
 
 ```php
 return array(
-    'plugins' => array(
+    'plugins' => [
         // dependencies
         new \Phergie\Irc\Plugin\React\Command\Plugin,
         new \Phergie\Irc\Plugin\React\CommandHelp\Plugin, // optional / recommended
 
         new \PSchwisow\Phergie\Plugin\Puppet\Plugin,
-    )
+    ]
 );
 ```
 

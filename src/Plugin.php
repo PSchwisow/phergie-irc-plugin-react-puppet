@@ -29,7 +29,7 @@ class Plugin extends AbstractPlugin
      */
     public function getSubscribedEvents()
     {
-        return array(
+        return [
             'command.say' => 'handleSayCommand',
             'command.act' => 'handleActCommand',
             'command.notice' => 'handleNoticeCommand',
@@ -38,7 +38,7 @@ class Plugin extends AbstractPlugin
             'command.act.help' => 'handleActHelp',
             'command.notice.help' => 'handleNoticeHelp',
             'command.raw.help' => 'handleRawHelp',
-        );
+        ];
     }
 
     /**
@@ -112,12 +112,12 @@ class Plugin extends AbstractPlugin
      */
     public function handleSayHelp(Event $event, Queue $queue)
     {
-        $this->sendHelpReply($event, $queue, array(
+        $this->sendHelpReply($event, $queue, [
             'Usage: say channel message',
             'channel - comma-separated list of channels/users to send the message to',
             'message - the message to send (all words after this are assumed to be part of message)',
             'Instructs the bot to repeat the specified phrase.',
-        ));
+        ]);
     }
 
     /**
@@ -128,12 +128,12 @@ class Plugin extends AbstractPlugin
      */
     public function handleActHelp(Event $event, Queue $queue)
     {
-        $this->sendHelpReply($event, $queue, array(
+        $this->sendHelpReply($event, $queue, [
             'Usage: act channel message',
             'channel - comma-separated list of channels/users to send the action to',
             'message - the message to include in the action (all words after this are assumed to be part of message)',
             'Instructs the bot to repeat the specified action.',
-        ));
+        ]);
     }
 
     /**
@@ -144,12 +144,12 @@ class Plugin extends AbstractPlugin
      */
     public function handleNoticeHelp(Event $event, Queue $queue)
     {
-        $this->sendHelpReply($event, $queue, array(
+        $this->sendHelpReply($event, $queue, [
             'Usage: notice channel message',
             'channel - comma-separated list of channels/users to send the notice to',
             'message - the message to send (all words after this are assumed to be part of message)',
             'Instructs the bot to send the specified notice.',
-        ));
+        ]);
     }
 
     /**
@@ -160,10 +160,10 @@ class Plugin extends AbstractPlugin
      */
     public function handleRawHelp(Event $event, Queue $queue)
     {
-        $this->sendHelpReply($event, $queue, array(
+        $this->sendHelpReply($event, $queue, [
             'Usage: NOT CURRENTLY IMPLEMENTED',
             'Instructs the bot to repeat a raw command.',
-        ));
+        ]);
     }
 
     /**
